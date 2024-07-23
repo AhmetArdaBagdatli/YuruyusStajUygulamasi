@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import './loginpage.dart';
-import './signuppage.dart';
-import './mainmenu.dart';
-import './recordspage.dart';
+import 'pages/loginpage.dart';
+import 'pages/signuppage.dart';
+import 'pages/mainmenu.dart';
+import 'pages/recordspage.dart';
+import 'pages/recorddetails.dart';
 
 void main() {
-  initializeDateFormatting('tr_TR', null).then((_) => runApp(MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeDateFormatting('tr_TR', null).then((_) => runApp(MyApp2()));
+}
+
+
+class MyApp2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Walking App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: RecordDetailsPage(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {

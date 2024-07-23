@@ -1,0 +1,1 @@
+const String GOOGLEMAPS_API_KEY = "AIzaSyAXE82SyM5mwPOTNzauxsigp1Wo-p4j8Dw";
