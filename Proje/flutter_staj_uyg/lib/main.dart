@@ -5,7 +5,7 @@ import 'pages/loginpage.dart';
 import 'pages/signuppage.dart';
 import 'pages/mainmenu.dart';
 import 'pages/recordspage.dart';
-import 'pages/recorddetails.dart';
+import 'pages/recordingpage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class MyApp2 extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RecordDetailsPage(),
+      home: RecordingPage(),
     );
   }
 }
