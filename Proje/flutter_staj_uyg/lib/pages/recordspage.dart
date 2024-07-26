@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import '../widgets/recorditem.dart';
+
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RecordsPage extends StatelessWidget {
   @override
@@ -40,13 +42,14 @@ class RecordsPage extends StatelessWidget {
                     day: 'Cum',
                     duration: '3s 12dk',
                     distance: '11.2km',
-                    isLatest: true,
+                    path: [LatLng(37.7749, -122.4194), LatLng(37.7750, -122.4195)],
                   ),
                   RecordItem(
                     date: '04.07.2024',
                     day: 'Prs',
                     duration: '42dk',
                     distance: '2.5km',
+                    path: [LatLng(37.7749, -122.4194), LatLng(37.7750, -122.4195)],
                   ),
                   // Add more RecordItems here as needed
                 ],

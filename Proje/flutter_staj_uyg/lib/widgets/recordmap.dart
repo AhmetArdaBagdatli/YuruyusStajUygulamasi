@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 
 class RecordMap extends StatefulWidget {
   final bool isRecording;
@@ -115,9 +116,17 @@ class _RecordMapState extends State<RecordMap> {
   }
 
   double _calculateDistance(List<LatLng> path) {
-    // Implement distance calculation logic here
-    // For simplicity, let's return a placeholder value
-    return path.length * 0.01; // 10 meters per point, just as an example
+    double totalDistance = 0.0;
+  
+    for (int i = 0; i < path.length - 1; i++) {
+      totalDistance += Geolocator.distanceBetween(
+        path[i].latitude,
+        path[i].longitude,
+        path[i + 1].latitude,
+        path[i + 1].longitude,
+      );
+    }
+    return totalDistance / 1000;
   }
 
   Future<void> _updateCameraPosition(LatLng pos) async {

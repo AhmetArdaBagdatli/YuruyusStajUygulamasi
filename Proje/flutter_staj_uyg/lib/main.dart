@@ -21,7 +21,7 @@ class MyApp2 extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RecordingPage(),
+      home: MyApp(),
     );
   }
 }
@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/mainmenu': (context) => MainMenuPage(),
         '/recordspage': (context) => RecordsPage(),
+        '/newrecordpage': (context) => RecordingPage(),
       },
     );
   }

@@ -52,7 +52,9 @@ class MainMenuPage extends StatelessWidget {
                       foregroundColor: Color.fromARGB(255, 231, 244, 255),
                       padding: EdgeInsets.symmetric(vertical: 16),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/newrecordpage');
+                    },
                   ),
                   SizedBox(height: 50),
                   // Records button
