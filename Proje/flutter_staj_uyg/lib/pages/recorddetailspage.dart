@@ -5,7 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RecordDetailPage extends StatelessWidget {
   final String date;
-  final String timeRange;
+  final String timeStart;
+    final String timeEnd;
   final String distance;
   final String duration;
   final List<LatLng> path;
@@ -13,7 +14,8 @@ class RecordDetailPage extends StatelessWidget {
   const RecordDetailPage({
     Key? key,
     required this.date,
-    required this.timeRange,
+    required this.timeStart,
+    required this.timeEnd,
     required this.distance,
     required this.duration,
     required this.path,
@@ -27,19 +29,19 @@ class RecordDetailPage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(16),
-              color: const Color(0xFF1E1E1E),
+              color: Color.fromARGB(255, 17, 41, 58),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        timeRange,
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
+                        timeStart + " - " + timeEnd,
+                        style: const TextStyle(color: Color.fromARGB(255, 231, 244, 255), fontSize: 18),
                       ),
                       Text(
                         date,
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(color: Color.fromARGB(255, 231, 244, 255), fontSize: 18),
                       ),
                     ],
                   ),
@@ -49,11 +51,11 @@ class RecordDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         duration,
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(color: Color.fromARGB(255, 231, 244, 255), fontSize: 18),
                       ),
                       Text(
                         distance,
-                        style: const TextStyle(color: Colors.white, fontSize: 18),
+                        style: const TextStyle(color: Color.fromARGB(255, 231, 244, 255), fontSize: 18),
                       ),
                     ],
                   ),
@@ -75,8 +77,8 @@ class RecordDetailPage extends StatelessWidget {
                     },
                     child: const Text('Geri'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[800],
-                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 17, 41, 58),
+                      foregroundColor: Color.fromARGB(255, 231, 244, 255),
                     ),
                   ),
                   ElevatedButton(
@@ -85,8 +87,8 @@ class RecordDetailPage extends StatelessWidget {
                     },
                     child: const Text('Sil'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[800],
-                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 17, 41, 58),
+                      foregroundColor: Color.fromARGB(255, 231, 244, 255),
                     ),
                   ),
                 ],

@@ -6,6 +6,8 @@ import '../pages/recorddetailspage.dart';
 class RecordItem extends StatelessWidget {
   final String date;
   final String day;
+  final String ts;
+  final String te;
   final String duration;
   final String distance;
   final List<LatLng> path;
@@ -14,6 +16,8 @@ class RecordItem extends StatelessWidget {
     Key? key,
     required this.date,
     required this.day,
+    required this.ts,
+    required this.te,
     required this.duration,
     required this.distance,
     required this.path,
@@ -28,7 +32,8 @@ class RecordItem extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => RecordDetailPage(
               date: date,
-              timeRange: '00:00 - 23:59', // You might want to add this as a parameter
+              timeStart: ts,
+              timeEnd: te,
               distance: distance,
               duration: duration,
               path: path,

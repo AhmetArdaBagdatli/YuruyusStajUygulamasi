@@ -40,16 +40,33 @@ class RecordsPage extends StatelessWidget {
                   RecordItem(
                     date: '05.07.2024',
                     day: 'Cum',
+                    ts: '12:00',
+                    te: '15:12',
                     duration: '3s 12dk',
                     distance: '11.2km',
-                    path: [LatLng(37.7749, -122.4194), LatLng(37.7750, -122.4195)],
+                    path: [
+                        LatLng(40.7829, -73.9654), // Central Park South
+                        LatLng(40.7892, -73.9673), // Central Park West
+                        LatLng(40.7929, -73.9588), // Central Park North
+                        LatLng(40.7736, -73.9655), // 5th Avenue
+                        LatLng(40.7829, -73.9654), // Back to start
+                      ],
                   ),
                   RecordItem(
                     date: '04.07.2024',
                     day: 'Prs',
+                    ts: '11:11',
+                    te: '11:53',
                     duration: '42dk',
                     distance: '2.5km',
-                    path: [LatLng(37.7749, -122.4194), LatLng(37.7750, -122.4195)],
+                    path: [
+                        LatLng(37.7749, -122.4194), // San Francisco City Hall
+                        LatLng(37.7785, -122.4156), // Union Square
+                        LatLng(37.7952, -122.4028), // Fisherman's Wharf
+                        LatLng(37.8083, -122.4156), // Fort Mason
+                        LatLng(37.8024, -122.4058), // Lombard Street
+                        LatLng(37.7749, -122.4194), // Back to City Hall
+                      ],
                   ),
                   // Add more RecordItems here as needed
                 ],

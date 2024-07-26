@@ -64,7 +64,7 @@ class _RecordingPageState extends State<RecordingPage> {
           children: [
             Container(
               padding: const EdgeInsets.all(16),
-              color: const Color(0xFF1E2630),
+              color: Color.fromARGB(255, 17, 41, 58),
               child: Column(
                 children: [
                   if (!_isRecording)
@@ -86,9 +86,9 @@ class _RecordingPageState extends State<RecordingPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text('Süre: ${_formatDuration(_recordingDuration)}',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Color.fromARGB(255, 231, 244, 255))),
                             Text('Mesafe: $_distance',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Color.fromARGB(255, 231, 244, 255))),
                           ],
                         ),
                         SizedBox(height: 16),
@@ -118,16 +118,16 @@ class _RecordingPageState extends State<RecordingPage> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF1E2630),
+        color: Color.fromARGB(255, 17, 41, 58),
         child: SizedBox(
           height: 60,
           child: TextButton(
             onPressed: () {
-              // Implement Ana Sayfa navigation
+              Navigator.pushNamed(context, '/mainmenu');
             },
             child: const Text(
               'Ana Sayfa',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Color.fromARGB(255, 231, 244, 255), fontSize: 18),
             ),
           ),
         ),
