@@ -46,7 +46,7 @@ class _RecordingPageState extends State<RecordingPage> {
 
   void _updateDistance(double distance) {
     setState(() {
-      _distance = '${distance.toStringAsFixed(2)}km';
+      _distance = '${distance.toStringAsFixed(3)}km';
     });
   }
 

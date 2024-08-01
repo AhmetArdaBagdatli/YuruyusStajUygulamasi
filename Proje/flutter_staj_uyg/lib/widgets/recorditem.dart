@@ -11,6 +11,7 @@ class RecordItem extends StatelessWidget {
   final String duration;
   final String distance;
   final List<LatLng> path;
+  final String recordId;
 
   const RecordItem({
     Key? key,
@@ -21,6 +22,7 @@ class RecordItem extends StatelessWidget {
     required this.duration,
     required this.distance,
     required this.path,
+    required this.recordId,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class RecordItem extends StatelessWidget {
               distance: distance,
               duration: duration,
               path: path,
+              recordId: recordId,
             ),
           ),
         );

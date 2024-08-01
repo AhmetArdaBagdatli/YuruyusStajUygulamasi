@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../widgets/weatherboard.dart';
 
 class MainMenuPage extends StatelessWidget {
@@ -68,6 +70,19 @@ class MainMenuPage extends StatelessWidget {
                     ),
                     onPressed: () {
                       Navigator.pushNamed(context, '/recordspage');
+                    },
+                  ),
+                  SizedBox(height: 50),
+                  ElevatedButton.icon(
+                    label: Text('Hesaptan Ayrıl'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(8, 31, 47, 1),
+                      foregroundColor: Color.fromARGB(255, 231, 244, 255),
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pushNamed(context, '/login');
                     },
                   ),
                 ],

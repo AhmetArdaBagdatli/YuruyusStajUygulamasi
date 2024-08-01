@@ -1,15 +1,18 @@
 import '../widgets/recorddetailmap.dart';
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class RecordDetailPage extends StatelessWidget {
   final String date;
   final String timeStart;
-    final String timeEnd;
+  final String timeEnd;
   final String distance;
   final String duration;
   final List<LatLng> path;
+  final String recordId;
 
   const RecordDetailPage({
     Key? key,
@@ -19,6 +22,7 @@ class RecordDetailPage extends StatelessWidget {
     required this.distance,
     required this.duration,
     required this.path,
+    required this.recordId,
   }) : super(key: key);
 
   @override
@@ -83,7 +87,8 @@ class RecordDetailPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Implement delete functionality
+                      _deleteRecord();
+                      Navigator.pop(context);
                     },
                     child: const Text('Sil'),
                     style: ElevatedButton.styleFrom(
@@ -98,5 +103,23 @@ class RecordDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _deleteRecord() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      try {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .collection('routes')
+            .doc(recordId) // Specify the record ID to delete
+            .delete();
+        print('Record deleted successfully');
+      } catch (e) {
+        print('Error deleting record: $e');
+      }
+    }
   }
 }

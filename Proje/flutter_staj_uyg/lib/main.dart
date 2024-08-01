@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'pages/loginpage.dart';
 import 'pages/signuppage.dart';
@@ -7,8 +8,9 @@ import 'pages/mainmenu.dart';
 import 'pages/recordspage.dart';
 import 'pages/recordingpage.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   initializeDateFormatting('tr_TR', null).then((_) => runApp(MyApp2()));
 }
 

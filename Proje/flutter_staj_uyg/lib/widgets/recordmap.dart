@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 class RecordMap extends StatefulWidget {
   final bool isRecording;
@@ -20,12 +23,16 @@ class RecordMap extends StatefulWidget {
 }
 
 class _RecordMapState extends State<RecordMap> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   LatLng? _currentP;
   Location _location = Location();
   Map<PolylineId, Polyline> _polylines = {};
   List<LatLng> _recordedPath = [];
   final Completer<GoogleMapController> _mapController = Completer<GoogleMapController>();
   StreamSubscription<LocationData>? _locationSubscription;
+  DateTime? _start;
+  final List<String> days = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
 
   @override
   void initState() {
@@ -85,14 +92,41 @@ class _RecordMapState extends State<RecordMap> {
   }
 
   void _startRecording() {
+    _start = Timestamp.now().toDate();
     _recordedPath.clear();
     if (_currentP != null) {
       _recordedPath.add(_currentP!);
     }
   }
 
-  void _stopRecording() {
-    // Optionally, you can save the recorded path or perform other actions here
+  void _stopRecording() async {
+      User? user = _auth.currentUser;
+      DateTime _end = Timestamp.now().toDate();
+
+      Duration duration = _end.difference(_start!);
+      int dhours = duration.inHours;
+      int dminutes = duration.inMinutes % (60);
+    if (user != null) {
+      // Serialize LatLng objects to a list of maps
+      List<Map<String, double>> serializedRoute = _recordedPath.map((latLng) => {
+        'latitude': latLng.latitude,
+        'longitude': latLng.longitude,
+      }).toList();
+
+      // Create a new document in the routes subcollection
+      await _firestore.collection('users').doc(user.uid).collection('routes').add({
+        'path': serializedRoute,
+        "distance": '${(_calculateDistance(_recordedPath)/1000).toStringAsFixed(3)}km',
+        "duration": "$dhours s, $dminutes dk",
+        'ts': DateFormat('HH:mm').format(_start!),
+        'te': DateFormat('HH:mm').format(_end),
+        'day': days[_start!.weekday % 7],
+        'date': DateFormat('dd/MM/yyyy').format(_start!),
+      });
+    } else {
+      // Handle case where no user is logged in
+      print("No user logged in");
+    }
   }
 
   void _updatePolyline() {
