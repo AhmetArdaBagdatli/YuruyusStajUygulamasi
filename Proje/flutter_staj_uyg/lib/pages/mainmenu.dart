@@ -24,12 +24,18 @@ class MainMenuPage extends StatelessWidget {
             height: 200,
             child: Center(
               child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.yellow, width: 2, style: BorderStyle.solid),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/logo.png', fit: BoxFit.contain),
+                    ),
+                    SizedBox(width: 10),
+                    Text('Ana Sayfa', style: TextStyle(color: Colors.white, fontSize: 24)),
+                  ],
                 ),
-                child: Center(child: Text('Logo', style: TextStyle(color: Colors.white))),
               ),
             ),
           ),

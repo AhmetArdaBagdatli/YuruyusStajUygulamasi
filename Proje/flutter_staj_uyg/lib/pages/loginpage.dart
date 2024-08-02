@@ -14,13 +14,20 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool _isLoading = false;
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      _checkCurrentUser();
+    });
   }
 
 
@@ -45,15 +52,12 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.yellow, width: 2),
-                      ),
-                      child: Center(child: Text('Logo', style: TextStyle(color: Colors.white))),
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/logo.png', fit: BoxFit.contain),
                     ),
                     SizedBox(width: 10),
-                    Text('App Name', style: TextStyle(color: Colors.white, fontSize: 24)),
+                    Text('Go-Route', style: TextStyle(color: Colors.white, fontSize: 24)),
                   ],
                 ),
               ),
@@ -158,5 +162,12 @@ class _LoginPageState extends State<LoginPage> {
       print('User creation failed');
     }
 
+  }
+
+  void _checkCurrentUser() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Navigator.of(context).pushReplacementNamed('/mainmenu');
+    }
   }
 }

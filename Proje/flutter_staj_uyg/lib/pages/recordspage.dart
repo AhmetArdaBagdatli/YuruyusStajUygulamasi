@@ -1,8 +1,7 @@
-import '../widgets/recorditem.dart';
 import '../widgets/recordslist.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class RecordsPage extends StatelessWidget {
   @override
@@ -19,15 +18,21 @@ class RecordsPage extends StatelessWidget {
                 colors: [Color.fromARGB(255, 53, 114, 225), Color.fromARGB(255, 35, 94, 203)],
               ),
             ),
-            height: 100,
+            height: 200,
             child: Center(
               child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.yellow, width: 2, style: BorderStyle.solid),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/logo.png', fit: BoxFit.contain),
+                    ),
+                    SizedBox(width: 10),
+                    Text('Kayıtlar', style: TextStyle(color: Colors.white, fontSize: 24)),
+                  ],
                 ),
-                child: Center(child: Text('Logo', style: TextStyle(color: Colors.white))),
               ),
             ),
           ),
@@ -49,19 +54,39 @@ class RecordsPage extends StatelessWidget {
               ),
             ),
             padding: EdgeInsets.all(16),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                child: Text('Ana Sayfa'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(8, 31, 47, 1),
-                  foregroundColor: Color.fromARGB(255, 231, 244, 255),
-                  padding: EdgeInsets.symmetric(vertical: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    child: Text('Ana Sayfa'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(8, 31, 47, 1),
+                      foregroundColor: Color.fromARGB(255, 231, 244, 255),
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/mainmenu');
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/mainmenu');
-                },
-              ),
+                SizedBox(width: 16), // Add some spacing between buttons
+                Expanded(
+                  child: ElevatedButton(
+                    child: Text('Yenile'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(8, 31, 47, 1),
+                      foregroundColor: Color.fromARGB(255, 231, 244, 255),
+                      padding: EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) => RecordsPage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ],

@@ -48,15 +48,12 @@ class _SignupPageState extends State<SignupPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.yellow, width: 2),
-                      ),
-                      child: Center(child: Text('Logo', style: TextStyle(color: Colors.white))),
+                      width: 100,
+                      height: 100,
+                      child: Image.asset('assets/logo.png', fit: BoxFit.contain),
                     ),
                     SizedBox(width: 10),
-                    Text('App Name', style: TextStyle(color: Colors.white, fontSize: 24)),
+                    Text('Go-Route', style: TextStyle(color: Colors.white, fontSize: 24)),
                   ],
                 ),
               ),
@@ -75,21 +72,6 @@ class _SignupPageState extends State<SignupPage> {
                       SizedBox(height: 25),
                       Text('Yeni Hesap', textAlign: TextAlign.center, style: TextStyle(color: Colors.blue, fontSize: 24)),
                       SizedBox(height: 25),
-                      TextField(
-                        controller: _usernameController,
-                        style: TextStyle(color: Color.fromARGB(255, 231, 244, 255)),
-                        decoration: InputDecoration(
-                          hintText: 'Kullanıcı Adı',
-                          hintStyle: TextStyle(color: Color.fromARGB(255, 231, 244, 255)),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color.fromARGB(255, 18, 73, 174)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.blue),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 50),
                       TextField(
                         controller: _emailController,
                         style: TextStyle(color: Color.fromARGB(255, 231, 244, 255)),
@@ -151,7 +133,6 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   void _signUp() async {
-    String username = _usernameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
