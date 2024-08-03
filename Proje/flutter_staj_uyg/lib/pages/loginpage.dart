@@ -36,9 +36,8 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Column(
         children: [
-          // Gradient box at the top
           Container(
-            height: 200, // Adjust this height as needed
+            height: 200, 
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -63,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          // Rest of the content
           Expanded(
             child: Container(
               color: Color.fromARGB(255, 17, 41, 58),
@@ -155,11 +153,7 @@ class _LoginPageState extends State<LoginPage> {
     User? user = await _auth.signinEmailPass(email, password);
 
     if (user != null){
-      print('User entered: ${user.uid}');
       Navigator.pushNamed(context, "/mainmenu");
-    }
-    else{
-      print('User creation failed');
     }
 
   }

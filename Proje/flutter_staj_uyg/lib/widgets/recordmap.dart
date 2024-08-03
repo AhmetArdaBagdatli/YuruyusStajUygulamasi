@@ -107,13 +107,11 @@ class _RecordMapState extends State<RecordMap> {
       int dhours = duration.inHours;
       int dminutes = duration.inMinutes % (60);
     if (user != null) {
-      // Serialize LatLng objects to a list of maps
       List<Map<String, double>> serializedRoute = _recordedPath.map((latLng) => {
         'latitude': latLng.latitude,
         'longitude': latLng.longitude,
       }).toList();
 
-      // Create a new document in the routes subcollection
       await _firestore.collection('users').doc(user.uid).collection('routes').add({
         'path': serializedRoute,
         "distance": '${(_calculateDistance(_recordedPath)/1000).toStringAsFixed(3)}km',
@@ -124,8 +122,7 @@ class _RecordMapState extends State<RecordMap> {
         'date': DateFormat('dd/MM/yyyy').format(_start!),
       });
     } else {
-      // Handle case where no user is logged in
-      print("No user logged in");
+      print("Kayıtlı kullanıcı yok.");
     }
   }
 

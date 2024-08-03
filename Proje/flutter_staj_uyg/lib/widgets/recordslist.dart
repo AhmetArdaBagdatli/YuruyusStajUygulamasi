@@ -34,7 +34,6 @@ class RecordList extends StatelessWidget {
         List<Widget> recordWidgets = snapshot.data!.docs.map((doc) {
           Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
-          // Deserialize the path data into a list of LatLng objects
           List<LatLng> path = (data['path'] as List)
               .map((point) => LatLng(point['latitude'], point['longitude']))
               .toList();
@@ -47,7 +46,6 @@ class RecordList extends StatelessWidget {
           String date = data['date'];
           String recordId = doc.id;
 
-          // Map data to the custom widget
           return RecordItem(
             path: path,
             distance: distance,

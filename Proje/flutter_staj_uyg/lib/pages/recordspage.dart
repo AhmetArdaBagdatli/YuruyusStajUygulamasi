@@ -9,7 +9,6 @@ class RecordsPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          // Top blue section with logo
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -36,7 +35,6 @@ class RecordsPage extends StatelessWidget {
               ),
             ),
           ),
-          // Main content area
           Expanded(
             child: Container(
               color: Color.fromARGB(255, 17, 41, 58),
@@ -44,7 +42,6 @@ class RecordsPage extends StatelessWidget {
               child: RecordList()
             ),
           ),
-          // Bottom blue section with "Ana Sayfa" button
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -69,7 +66,7 @@ class RecordsPage extends StatelessWidget {
                     },
                   ),
                 ),
-                SizedBox(width: 16), // Add some spacing between buttons
+                SizedBox(width: 16),
                 Expanded(
                   child: ElevatedButton(
                     child: Text('Yenile'),

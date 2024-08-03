@@ -32,7 +32,6 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       body: Column(
         children: [
-          // Gradient box at the top (unchanged)
           Container(
             height: 200,
             decoration: BoxDecoration(
@@ -59,7 +58,6 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
           ),
-          // Rest of the content
           Expanded(
             child: Container(
               color: Color.fromARGB(255, 17, 41, 58),
@@ -139,11 +137,9 @@ class _SignupPageState extends State<SignupPage> {
     User? user = await _auth.signupEmailPass(email, password);
 
     if (user != null){
-      print('User created: ${user.uid}');
       Navigator.pushNamed(context, "/mainmenu");
     }
     else{
-      print('User creation failed');
     }
 
   }

@@ -11,28 +11,18 @@ import 'pages/recordingpage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  initializeDateFormatting('tr_TR', null).then((_) => runApp(MyApp2()));
-}
-
-
-class MyApp2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Walking App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyApp(),
-    );
-  }
+  await initializeDateFormatting('tr_TR', null);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Your App Name',
+      title: 'Go-Route',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       initialRoute: '/login',
       routes: {
         '/login': (context) => LoginPage(),

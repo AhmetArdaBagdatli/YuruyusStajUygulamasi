@@ -4,15 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../widgets/weatherboard.dart';
 
 class MainMenuPage extends StatelessWidget {
-  final String apiKey = 'e6b443ec7352d6f2294012d586e0285f'; // Replace with your OpenWeatherMap API key
-  final String city = 'Istanbul'; // Replace with the desired city
+  final String apiKey = 'e6b443ec7352d6f2294012d586e0285f';
+  final String city = 'Istanbul';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          // Top blue section with logo
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -39,7 +38,6 @@ class MainMenuPage extends StatelessWidget {
               ),
             ),
           ),
-          // Main content area
           Expanded(
             child: Container(
               color: Color.fromARGB(255, 17, 41, 58),
@@ -47,7 +45,6 @@ class MainMenuPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Weather board
                   SizedBox(height: 50),
                   WeatherBoard(apiKey: apiKey, city: city),
                   SizedBox(height: 50),
@@ -65,7 +62,6 @@ class MainMenuPage extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 50),
-                  // Records button
                   ElevatedButton.icon(
                     icon: Icon(Icons.bookmark),
                     label: Text('Kayıtlar'),
@@ -95,7 +91,6 @@ class MainMenuPage extends StatelessWidget {
               ),
             ),
           ),
-          // Bottom blue section
           Container(
             height: 50,
             decoration: BoxDecoration(
