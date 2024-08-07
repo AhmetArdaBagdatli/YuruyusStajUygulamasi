@@ -142,8 +142,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _googleSignin() {
+  void _googleSignin() async {
     _auth.signinGoogle();
+    User? user = await _auth.signinGoogle();
+
+    if (user != null){
+      Navigator.pushNamed(context, "/mainmenu");
+    }
   }
   
   void _signIn() async {
