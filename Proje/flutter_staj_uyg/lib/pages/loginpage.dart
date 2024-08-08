@@ -104,15 +104,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     SizedBox(height: 100),
-                    ElevatedButton(
-                      child: Text('Giriş'),
+                    TextButton(
+                      child: Text('Giriş', style: TextStyle(color: Colors.blue)),
                       onPressed: () {
                         _signIn();
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
-                      ),
                     ),
                     SizedBox(height: 20),
                     TextButton(
@@ -123,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      child: Text('Google Giriş Butonu'),
+                      child: Text('Google İle Giriş Yap'),
                       onPressed: () {
                         _googleSignin();
                       },
