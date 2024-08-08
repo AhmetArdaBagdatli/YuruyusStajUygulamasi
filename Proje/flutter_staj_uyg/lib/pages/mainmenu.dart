@@ -45,9 +45,9 @@ class MainMenuPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 50),
+                  SizedBox(height: 20),
                   WeatherBoard(apiKey: apiKey, city: city),
-                  SizedBox(height: 50),
+                  SizedBox(height: 10),
                   // New Entry button
                   ElevatedButton.icon(
                     icon: Icon(Icons.add),
@@ -61,7 +61,7 @@ class MainMenuPage extends StatelessWidget {
                       Navigator.pushNamed(context, '/newrecordpage');
                     },
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 10),
                   ElevatedButton.icon(
                     icon: Icon(Icons.bookmark),
                     label: Text('Kayıtlar'),
@@ -74,7 +74,7 @@ class MainMenuPage extends StatelessWidget {
                       Navigator.pushNamed(context, '/recordspage');
                     },
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 10),
                   ElevatedButton.icon(
                     label: Text('Hesaptan Ayrıl'),
                     style: ElevatedButton.styleFrom(
